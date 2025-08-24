@@ -57,8 +57,14 @@ async def query_llm(session, image_b64):
         return r["choices"][0]["message"]["content"]
 
 def write_log(file_name, result):
-    """写入日志"""
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
+    """写入日志到按日期命名的文件"""
+    # 确保 logs 文件夹存在
+    os.makedirs("logs", exist_ok=True)
+    
+    # 根据启动时的日期命名日志文件
+    log_file = f"logs/log_{datetime.now().strftime('%Y%m%d')}.txt"
+    
+    with open(log_file, "a", encoding="utf-8") as f:
         f.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Screenshot: {file_name}\n")
         f.write(result + "\n")
         f.write("="*50 + "\n")
