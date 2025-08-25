@@ -39,8 +39,8 @@ async def query_llm(session, image_b64):
         "Content-Type": "application/json"
     }
     payload = {
-        # "model": "doubao-seed-1-6-vision-250815",
-        "model": "doubao-1.5-vision-pro-250328",
+        "model": "doubao-seed-1-6-vision-250815",
+        # "model": "doubao-1.5-vision-pro-250328",
         "messages": [
             {
                 "content": [
